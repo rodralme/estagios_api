@@ -9,11 +9,9 @@ class Perfil extends Model
 {
     use SoftDeletes;
 
-    protected $revisionCreationsEnabled = true;
+    protected $table = 'perfis';
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
-
-    protected $table = 'perfis';
 
     protected $casts = [
         'admin' => 'boolean'
