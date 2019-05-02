@@ -19,7 +19,7 @@ class Empresa extends Model
      * @var array
      */
     protected $fillable = [
-        'nome', 'email', 'razao_social', 'cnpj', 'cnpj_sem_mascara', 'telefone1', 'telefone2', 'endereco_id'
+        'nome', 'email', 'razao_social', 'cnpj', 'cnpj_sem_mascara', 'telefone1', 'telefone2', 'sobre', 'endereco_id'
     ];
 
     protected static function boot()
