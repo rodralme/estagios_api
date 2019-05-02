@@ -30,4 +30,13 @@ class Candidato extends Model
     {
         return $this->belongsTo(Endereco::class, 'endereco_id');
     }
+
+    public function areas()
+    {
+        return $this->belongsToMany(
+            AreaAtuacao::class,
+            'candidatos_areas_atuacao',
+            'candidato_id',
+            'area_atuacao_id');
+    }
 }
