@@ -9,18 +9,6 @@ use Tests\TestCase;
 class EmpresaTest extends TestCase
 {
     /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
-    /**
      * @test
      */
     public function usuarioConsegueListarEmpresas()
