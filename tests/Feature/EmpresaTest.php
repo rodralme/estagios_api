@@ -40,9 +40,12 @@ class EmpresaTest extends TestCase
     {
         $usuario = factory(Usuario::class)->create();
 
-        $id = factory(Empresa::class)->create()->id;
+        $empresa = factory(Empresa::class)->create();
+        $id = $empresa->id;
+        $empresa->load('endereco');
 
         $this->actingAs($usuario)->json('get', 'api/empresas/'.$id)
-            ->assertJsonFragment(['id' => $id]);
+            ->assertJsonFragment(['id' => $id])
+            ->assertJsonFragment(['logradouro' => $empresa->endereco->logradouro]);
     }
 }

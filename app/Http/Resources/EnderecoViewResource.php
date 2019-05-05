@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class EmpresaIndexResource extends JsonResource
+class EnderecoViewResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,13 +17,13 @@ class EmpresaIndexResource extends JsonResource
         return [
             'id' => $this->id,
             'ativo' => !$this->trashed(),
-            'nome' => $this->nome,
-            'email' => $this->email,
-            'razao_social' => $this->razao_social,
-            'cnpj' => $this->cnpj,
-            'telefone1' => $this->telefone1,
-            'telefone2' => $this->telefone2,
-            'sobre' => $this->sobre,
+            'cep' => $this->cep,
+            'logradouro' => $this->logradouro,
+            'numero' => $this->numero,
+            'complemento' => $this->complemento,
+            'bairro' => $this->bairro,
+            'cidade' => $this->cidade,
+            'uf' => $this->uf,
         ];
     }
 }
