@@ -20,4 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('empresas')->group(function () {
     Route::get('/')
         ->uses('EmpresaController@index');
+
+    Route::get('/{empresa}')
+        ->uses('EmpresaController@view');
 });
