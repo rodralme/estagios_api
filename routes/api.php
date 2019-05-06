@@ -29,3 +29,11 @@ Route::prefix('empresas')->group(function () {
     Route::get('/{empresa}')
         ->uses('EmpresaController@view');
 });
+
+Route::prefix('vagas')->group(function () {
+    Route::get('/')
+        ->uses('VagaController@index');
+
+    Route::get('/{vaga}')
+        ->uses('VagaController@view');
+});

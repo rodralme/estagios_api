@@ -12,7 +12,7 @@ class AreaAtuacaoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('areas_atuacao')->insert([
+        $areas = [
             ['nome' => 'Administração'],
             ['nome' => 'Arquitetura e Urbanismo'],
             ['nome' => 'Direito'],
@@ -20,6 +20,10 @@ class AreaAtuacaoSeeder extends Seeder
             ['nome' => 'Engenharia Civil'],
             ['nome' => 'Pedagogia'],
             ['nome' => 'Tecnologia da Informação'],
-        ]);
+        ];
+
+        foreach ($areas as $area) {
+            \App\Models\AreaAtuacao::create($area);
+        }
     }
 }

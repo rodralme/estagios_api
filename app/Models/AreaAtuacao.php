@@ -12,4 +12,6 @@ class AreaAtuacao extends Model
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     protected $table = 'areas_atuacao';
+
+    protected $fillable = ['nome'];
 }

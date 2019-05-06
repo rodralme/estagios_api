@@ -11,5 +11,5 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    const PER_PAGE = 10;
+    const PER_PAGE = 15;
 }
