@@ -19,6 +19,8 @@ class CreateVagasTable extends Migration
             $table->text('descricao');
             $table->string('remuneracao')->nullable();
             $table->integer('carga_horaria')->nullable();
+            $table->dateTime('inicio');
+            $table->dateTime('fim');
 
             $table->unsignedBigInteger('empresa_id');
             $table->foreign('empresa_id')->references('id')->on('empresas')

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\AreaAtuacao;
+use App\Models\Candidato;
 use App\Models\Empresa;
 use App\Models\Vaga;
 use Illuminate\Database\Seeder;
@@ -16,7 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call(AreaAtuacaoSeeder::class);
+
+        factory(Candidato::class, 58)->create();
 
         $this->areas = AreaAtuacao::all(['id'])->pluck('id')->toArray();
 
