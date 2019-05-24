@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCandidatosAreasAtuacaoTable extends Migration
+class CreatePessoasAreasInteresseTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateCandidatosAreasAtuacaoTable extends Migration
      */
     public function up()
     {
-        Schema::create('candidatos_areas_atuacao', function (Blueprint $table) {
-            $table->unsignedBigInteger('candidato_id');
+        Schema::create('pessoas_areas_interesse', function (Blueprint $table) {
+            $table->unsignedBigInteger('pessoa_id');
             $table->unsignedInteger('area_atuacao_id');
 
-            $table->foreign('candidato_id')->references('id')->on('candidatos')
+            $table->foreign('pessoa_id')->references('id')->on('pessoas')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('area_atuacao_id')->references('id')->on('areas_atuacao')
                 ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->primary(['candidato_id', 'area_atuacao_id']);
+            $table->primary(['pessoa_id', 'area_atuacao_id']);
         });
     }
 
@@ -33,6 +33,6 @@ class CreateCandidatosAreasAtuacaoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('candidatos_areas_atuacao');
+        Schema::dropIfExists('pessoas_areas_interesse');
     }
 }

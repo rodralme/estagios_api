@@ -2,11 +2,11 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Models\Candidato;
+use App\Models\Pessoa;
 use App\Models\Endereco;
 use Faker\Generator as Faker;
 
-$factory->define(Candidato::class, function (Faker $faker) {
+$factory->define(Pessoa::class, function (Faker $faker) {
     return [
         'nome' => $faker->name,
         'email' => $faker->safeEmail,

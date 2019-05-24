@@ -14,7 +14,7 @@ class VagaViewResource extends JsonResource
      */
     public function toArray($request)
     {
-        $this->resource->load('empresa', 'areas');
+        $this->resource->load('empresa', 'area');
 
         return [
             'id' => $this->id,
@@ -24,7 +24,7 @@ class VagaViewResource extends JsonResource
             'remuneracao' => $this->remuneracao,
             'carga_horaria' => $this->carga_horaria . ' horas semanais',
             'empresa' => new EmpresaViewResource($this->whenLoaded('empresa')),
-            'areas' => AreaViewResource::collection($this->whenLoaded('areas')),
+            'area' => new AreaViewResource($this->whenLoaded('area')),
         ];
     }
 }

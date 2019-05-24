@@ -17,9 +17,15 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::prefix('candidatos')->group(function () {
-    Route::get('/{candidato}')
-        ->uses('CandidatoController@view');
+Route::prefix('areas')->group(function () {
+    Route::get('/', function () {
+        return \App\Models\AreaAtuacao::all(['id', 'nome', 'sigla']);
+    });
+});
+
+Route::prefix('pessoas')->group(function () {
+    Route::get('/{pessoa}')
+        ->uses('PessoaController@view');
 });
 
 Route::prefix('empresas')->group(function () {

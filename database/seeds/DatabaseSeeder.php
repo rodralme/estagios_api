@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\AreaAtuacao;
-use App\Models\Candidato;
+use App\Models\Pessoa;
 use App\Models\Empresa;
 use App\Models\Vaga;
 use Illuminate\Database\Seeder;
@@ -19,18 +19,16 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(AreaAtuacaoSeeder::class);
 
-        factory(Candidato::class, 58)->create();
+        factory(Pessoa::class, 58)->create();
 
         $this->areas = AreaAtuacao::all(['id'])->pluck('id')->toArray();
 
         factory(Empresa::class, 5)->create()->each(function ($empresa) {
             factory(Vaga::class, rand(1, 5))
-                ->create(['empresa_id' => $empresa->id])
-                ->each(function (Vaga $vaga) {
-                    $index = array_rand($this->areas, 1);
-                    $vaga->areas()->attach($this->areas[$index]);
-                    $vaga->save();
-                });
+                ->create([
+                    'empresa_id' => $empresa->id,
+                    'area_atuacao_id' => $this->areas[array_rand($this->areas, 1)],
+                ]);
         });
     }
 }

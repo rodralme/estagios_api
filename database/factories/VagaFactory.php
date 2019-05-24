@@ -2,11 +2,13 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
+use App\Models\AreaAtuacao;
 use App\Models\Empresa;
 use App\Models\Vaga;
 use Faker\Generator as Faker;
 
 $factory->define(Vaga::class, function (Faker $faker) {
+
     return [
         'titulo' => $faker->sentence,
         'descricao' => $faker->realText(200),
@@ -16,6 +18,9 @@ $factory->define(Vaga::class, function (Faker $faker) {
         'fim' => $faker->dateTimeBetween('6 days', '36 days'),
         'empresa_id' => function() {
             return factory(Empresa::class)->create()->id;
+        },
+        'area_atuacao_id' => function() {
+            return factory(AreaAtuacao::class)->create()->id;
         }
     ];
 });

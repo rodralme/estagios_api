@@ -16,8 +16,8 @@ class AreaViewResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'ativo' => !$this->trashed(),
             'nome' => $this->nome,
+            'sigla' => $this->sigla,
         ];
     }
 }

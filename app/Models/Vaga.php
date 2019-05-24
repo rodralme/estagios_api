@@ -19,7 +19,7 @@ class Vaga extends Model
      * @var array
      */
     protected $fillable = [
-        'titulo', 'descricao', 'remuneracao', 'carga_horaria', 'inicio', 'fim', 'empresa_id'
+        'titulo', 'descricao', 'remuneracao', 'carga_horaria', 'inicio', 'fim', 'empresa_id', 'area_atuacao_id'
     ];
 
     /*
@@ -31,12 +31,8 @@ class Vaga extends Model
         return $this->belongsTo(Empresa::class, 'empresa_id');
     }
 
-    public function areas()
+    public function area()
     {
-        return $this->belongsToMany(
-            AreaAtuacao::class,
-            'vagas_areas_atuacao',
-            'vaga_id',
-            'area_atuacao_id');
+        return $this->belongsTo(AreaAtuacao::class, 'area_atuacao_id');
     }
 }

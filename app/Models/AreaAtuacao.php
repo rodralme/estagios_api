@@ -13,5 +13,5 @@ class AreaAtuacao extends Model
 
     protected $table = 'areas_atuacao';
 
-    protected $fillable = ['nome'];
+    protected $fillable = ['nome', 'sigla'];
 }

@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Candidato extends Model
+class Pessoa extends Model
 {
     use SoftDeletes;
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at', 'nascimento'];
 
-    protected $table = 'candidatos';
+    protected $table = 'pessoas';
 
     /**
      * The attributes that are mass assignable.
@@ -35,8 +35,8 @@ class Candidato extends Model
     {
         return $this->belongsToMany(
             AreaAtuacao::class,
-            'candidatos_areas_atuacao',
-            'candidato_id',
+            'pessoas_areas_interesse',
+            'pessoa_id',
             'area_atuacao_id');
     }
 }

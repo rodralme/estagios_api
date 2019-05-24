@@ -14,6 +14,8 @@ class VagaIndexResource extends JsonResource
      */
     public function toArray($request)
     {
+        $this->resource->load('area');
+
         return [
             'id' => $this->id,
             'ativo' => !$this->trashed(),
@@ -22,7 +24,7 @@ class VagaIndexResource extends JsonResource
             'remuneracao' => $this->remuneracao,
             'carga_horaria' => $this->carga_horaria . ' horas semanais',
             'empresa' => $this->empresa,
-            'areas' => $this->areas,
+            'area' => new AreaViewResource($this->whenLoaded('area')),
         ];
     }
 }

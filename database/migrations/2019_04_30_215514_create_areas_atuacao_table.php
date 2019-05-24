@@ -16,6 +16,7 @@ class CreateAreasAtuacaoTable extends Migration
         Schema::create('areas_atuacao', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome')->unique();
+            $table->string('sigla', 3)->unique();
             $table->string('palavras_chave')->nullable();
             $table->timestamps();
             $table->softDeletes();

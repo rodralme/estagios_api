@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AreaAtuacao;
 use Illuminate\Database\Seeder;
 
 class AreaAtuacaoSeeder extends Seeder
@@ -12,17 +13,17 @@ class AreaAtuacaoSeeder extends Seeder
     public function run()
     {
         $areas = [
-            ['nome' => 'Administração'],
-            ['nome' => 'Arquitetura e Urbanismo'],
-            ['nome' => 'Direito'],
-            ['nome' => 'Educação Física'],
-            ['nome' => 'Engenharia Civil'],
-            ['nome' => 'Pedagogia'],
-            ['nome' => 'Tecnologia da Informação'],
+            ['nome' => 'Administração', 'sigla' => 'ADM'],
+            ['nome' => 'Arquitetura e Urbanismo', 'sigla' => 'AU'],
+            ['nome' => 'Direito', 'sigla' => 'DIR'],
+            ['nome' => 'Educação Física', 'sigla' => 'EF'],
+            ['nome' => 'Engenharia Civil', 'sigla' => 'ECI'],
+            ['nome' => 'Pedagogia', 'sigla' => 'PED'],
+            ['nome' => 'Tecnologia da Informação', 'sigla' => 'TI'],
         ];
 
         foreach ($areas as $area) {
-            \App\Models\AreaAtuacao::create($area);
+            AreaAtuacao::create($area);
         }
     }
 }
