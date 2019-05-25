@@ -11,9 +11,12 @@ class VagaController extends Controller
 {
     public function index(Request $request)
     {
-        $dados = Vaga::join('empresas', 'empresas.id', '=', 'vagas.empresa_id')
+        $dados = Vaga::join('areas_atuacao', 'areas_atuacao.id', '=', 'vagas.area_atuacao_id')
+            ->leftJoin('empresas', 'empresas.id', '=', 'vagas.empresa_id')
             ->select(
                 'vagas.*',
+                'areas_atuacao.nome as area',
+                'areas_atuacao.sigla as sigla',
                 'empresas.nome as empresa'
             )
             ->paginate(self::PER_PAGE);

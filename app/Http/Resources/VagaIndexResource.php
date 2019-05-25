@@ -19,12 +19,18 @@ class VagaIndexResource extends JsonResource
         return [
             'id' => $this->id,
             'ativo' => !$this->trashed(),
+            'created_at' => $this->created_at->diffForHumans(),
             'titulo' => $this->titulo,
             'descricao' => $this->descricao,
+            'inicio' => $this->inicio->format('d/m'),
+            'fim' => $this->fim->format('d/m'),
             'remuneracao' => $this->remuneracao,
             'carga_horaria' => $this->carga_horaria . ' horas semanais',
             'empresa' => $this->empresa,
-            'area' => new AreaViewResource($this->whenLoaded('area')),
+            'email' => $this->email,
+            'telefone' => $this->telefone,
+            'area' => $this->area,
+            'sigla' => $this->sigla,
         ];
     }
 }

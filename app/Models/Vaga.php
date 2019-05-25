@@ -9,7 +9,7 @@ class Vaga extends Model
 {
     use SoftDeletes;
 
-    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'inicio', 'fim'];
 
     protected $table = 'vagas';
 
@@ -19,7 +19,8 @@ class Vaga extends Model
      * @var array
      */
     protected $fillable = [
-        'titulo', 'descricao', 'remuneracao', 'carga_horaria', 'inicio', 'fim', 'empresa_id', 'area_atuacao_id'
+        'titulo', 'descricao', 'inicio', 'fim', 'remuneracao', 'carga_horaria',
+        'banner', 'email', 'telefone', 'empresa_id', 'area_atuacao_id'
     ];
 
     /*

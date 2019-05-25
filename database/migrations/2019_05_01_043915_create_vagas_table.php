@@ -17,17 +17,20 @@ class CreateVagasTable extends Migration
             $table->bigIncrements('id');
             $table->string('titulo');
             $table->text('descricao');
-            $table->string('remuneracao')->nullable();
-            $table->integer('carga_horaria')->nullable();
             $table->dateTime('inicio');
             $table->dateTime('fim');
-
-            $table->unsignedBigInteger('empresa_id');
-            $table->foreign('empresa_id')->references('id')->on('empresas')
-                ->onUpdate('cascade')->onDelete('restrict');
+            $table->string('remuneracao')->nullable();
+            $table->integer('carga_horaria')->nullable();
+            $table->string('banner')->nullable();
+            $table->string('email')->nullable();
+            $table->string('telefone', 15)->nullable();
 
             $table->unsignedInteger('area_atuacao_id');
             $table->foreign('area_atuacao_id')->references('id')->on('areas_atuacao')
+                ->onUpdate('cascade')->onDelete('restrict');
+
+            $table->unsignedBigInteger('empresa_id')->nullable();
+            $table->foreign('empresa_id')->references('id')->on('empresas')
                 ->onUpdate('cascade')->onDelete('restrict');
 
             $table->timestamps();
