@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->areas = AreaAtuacao::all(['id'])->pluck('id')->toArray();
 
         factory(Empresa::class, 5)->create()->each(function ($empresa) {
-            factory(Vaga::class, rand(1, 5))
+            factory(Vaga::class, rand(4, 12))
                 ->create([
                     'empresa_id' => $empresa->id,
                     'area_atuacao_id' => $this->areas[array_rand($this->areas, 1)],
