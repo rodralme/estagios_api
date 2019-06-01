@@ -13,6 +13,9 @@ class VagaController extends Controller
     {
         $dados = Vaga::join('areas_atuacao', 'areas_atuacao.id', '=', 'vagas.area_atuacao_id')
             ->leftJoin('empresas', 'empresas.id', '=', 'vagas.empresa_id')
+            ->when($request->has('area'), function ($query) use ($request) {
+                $query->where('areas_atuacao.sigla', $request->input('area'));
+            })
             ->select(
                 'vagas.*',
                 'areas_atuacao.nome as area',
