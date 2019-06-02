@@ -2,16 +2,17 @@
 
 namespace App\Http\Middleware;
 
+use Exception;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
-use PHPUnit\Framework\Exception;
 
 class Authenticate extends Middleware
 {
     /**
      * Get the path the user should be redirected to when they are not authenticated.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return string
+     * @throws Exception
      */
     protected function redirectTo($request)
     {
