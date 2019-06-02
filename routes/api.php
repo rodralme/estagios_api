@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
+Route::post('/register', 'AuthController@register');
+Route::post('/login', 'AuthController@login');
+Route::post('/logout', 'AuthController@logout');
+
 Route::prefix('areas')->group(function () {
     Route::get('/', function () {
         return \App\Models\AreaAtuacao::all(['id', 'nome', 'sigla']);
@@ -28,18 +32,17 @@ Route::prefix('pessoas')->group(function () {
         ->uses('PessoaController@view');
 });
 
-Route::prefix('empresas')->group(function () {
-    Route::get('/')
-        ->uses('EmpresaController@index');
-
-    Route::get('/{empresa}')
-        ->uses('EmpresaController@view');
-});
-
 Route::prefix('vagas')->group(function () {
     Route::get('/')
         ->uses('VagaController@index');
 
     Route::get('/{vaga}')
         ->uses('VagaController@view');
+});
+
+Route::middleware('auth:api')->group(function () {
+
+    Route::post('/candidatar', function () {
+        return 'ok';
+    });
 });
