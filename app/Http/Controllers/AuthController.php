@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthRequest;
 use App\Models\Usuario;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function register(AuthRequest $request)
     {
         $user = Usuario::create([
             'email'    => $request->email,
@@ -20,7 +20,7 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function login()
+    public function login(AuthRequest $request)
     {
         $credentials = request(['email', 'password']);
 

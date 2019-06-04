@@ -6,6 +6,7 @@ use App\Helpers\Responder;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -53,5 +54,10 @@ class Handler extends ExceptionHandler
         }
 
         return parent::render($request, $exception);
+    }
+
+    protected function invalidJson($request, ValidationException $exception)
+    {
+        return Responder::error(collect($exception->errors())->flatten(), "", 422);
     }
 }
