@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -24,7 +25,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            throw new AuthenticationException();
         }
 
         return $this->respondWithToken($token);

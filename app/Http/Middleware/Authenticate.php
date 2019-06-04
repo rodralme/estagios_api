@@ -19,6 +19,5 @@ class Authenticate extends Middleware
         // if (! $request->expectsJson()) {
         //     return route('login');
         // }
-        throw new Exception('Você não tem acesso', 401);
     }
 }

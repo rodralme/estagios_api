@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use App\Helpers\Responder;
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -46,6 +48,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof AuthenticationException) {
+            return Responder::error([], $exception->getMessage(), 401);
+        }
+
         return parent::render($request, $exception);
     }
 }
