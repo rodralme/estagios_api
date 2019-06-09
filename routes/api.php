@@ -37,9 +37,8 @@ Route::prefix('vagas')->group(function () {
 
 Route::middleware('auth:api')->group(function () {
 
-    Route::post('/candidatar', function () {
-        return 'ok';
-    });
+    Route::post('vagas/{vaga}/candidatar')
+        ->uses('VagaController@candidatar');
 
     Route::get('/profile')
         ->uses('PessoaController@profile');

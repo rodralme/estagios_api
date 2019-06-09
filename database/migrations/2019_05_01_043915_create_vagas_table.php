@@ -31,6 +31,10 @@ class CreateVagasTable extends Migration
 
             $table->unsignedBigInteger('empresa_id')->nullable();
             $table->foreign('empresa_id')->references('id')->on('empresas')
+                ->onUpdate('cascade')->onDelete('set null');
+
+            $table->unsignedBigInteger('usuario_id');
+            $table->foreign('usuario_id')->references('id')->on('usuarios')
                 ->onUpdate('cascade')->onDelete('restrict');
 
             $table->timestamps();

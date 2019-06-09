@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             factory(Vaga::class, rand(4, 12))
                 ->create([
                     'empresa_id' => $empresa->id,
-                    'area_atuacao_id' => 1,
+                    'area_atuacao_id' => $this->areas[0],
+                    'usuario_id' => 1,
                 ])
                 ->each(function ($vaga) {
                     $vaga->area_atuacao_id = $this->areas[array_rand($this->areas, 1)];

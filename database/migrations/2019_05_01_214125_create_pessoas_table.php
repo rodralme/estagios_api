@@ -22,9 +22,9 @@ class CreatePessoasTable extends Migration
             $table->string('telefone2', 15)->nullable();
             $table->text('sobre')->nullable();
 
-            $table->unsignedBigInteger('usuario_id')->nullable();
+            $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('usuarios')
-                ->onUpdate('cascade')->onDelete('set null');
+                ->onUpdate('cascade')->onDelete('restrict');
 
             $table->unsignedBigInteger('endereco_id')->nullable();
             $table->foreign('endereco_id')->references('id')->on('enderecos')

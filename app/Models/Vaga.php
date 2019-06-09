@@ -36,4 +36,13 @@ class Vaga extends Model
     {
         return $this->belongsTo(AreaAtuacao::class, 'area_atuacao_id');
     }
+
+    public function usuarios()
+    {
+        return $this->belongsToMany(
+            Usuario::class,
+            'candidaturas',
+            'vaga_id',
+            'usuario_id');
+    }
 }

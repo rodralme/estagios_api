@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Responder;
 use App\Http\Resources\VagaIndexResource;
 use App\Http\Resources\VagaViewResource;
 use App\Models\Vaga;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class VagaController extends Controller
@@ -29,6 +31,13 @@ class VagaController extends Controller
 
     public function view(Vaga $vaga)
     {
-        return new VagaViewResource($vaga);
+        return Responder::success(new VagaViewResource($vaga));
+    }
+
+    public function candidatar(Vaga $vaga)
+    {
+        $vaga->usuarios()->attach(auth()->id(), ['data' => Carbon::now()]);
+
+        return $this->view($vaga);
     }
 }

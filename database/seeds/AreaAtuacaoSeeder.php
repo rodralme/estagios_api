@@ -2,6 +2,7 @@
 
 use App\Models\AreaAtuacao;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AreaAtuacaoSeeder extends Seeder
 {
@@ -12,6 +13,8 @@ class AreaAtuacaoSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('areas_atuacao')->delete();
+
         $areas = [
             ['nome' => 'Administração', 'sigla' => 'ADM'],
             ['nome' => 'Arquitetura e Urbanismo', 'sigla' => 'AU'],

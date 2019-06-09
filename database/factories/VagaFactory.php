@@ -4,6 +4,7 @@
 
 use App\Models\AreaAtuacao;
 use App\Models\Empresa;
+use App\Models\Usuario;
 use App\Models\Vaga;
 use Faker\Generator as Faker;
 
@@ -21,6 +22,9 @@ $factory->define(Vaga::class, function (Faker $faker) {
         },
         'area_atuacao_id' => function() {
             return factory(AreaAtuacao::class)->create()->id;
-        }
+        },
+        'usuario_id' => function() {
+            return factory(Usuario::class)->create()->id;
+        },
     ];
 });

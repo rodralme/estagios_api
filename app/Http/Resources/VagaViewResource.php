@@ -16,6 +16,8 @@ class VagaViewResource extends JsonResource
     {
         $this->resource->load('empresa', 'area');
 
+        $candidatado = !empty($this->usuarios()->find(auth()->id()));
+
         return [
             'id' => $this->id,
             'ativo' => !$this->trashed(),
@@ -26,6 +28,7 @@ class VagaViewResource extends JsonResource
             'carga_horaria' => $this->carga_horaria . ' horas semanais',
             'empresa' => new EmpresaViewResource($this->whenLoaded('empresa')),
             'area' => new AreaViewResource($this->whenLoaded('area')),
+            'candidatado' => $candidatado
         ];
     }
 }
