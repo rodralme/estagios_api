@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(AreaAtuacaoSeeder::class);
 
-        factory(Pessoa::class, 58)->create();
+//        factory(Pessoa::class, 58)->create();
 
         $this->areas = AreaAtuacao::all(['id'])->pluck('id')->toArray();
 

@@ -27,11 +27,6 @@ Route::prefix('areas')->group(function () {
     });
 });
 
-Route::prefix('pessoas')->group(function () {
-    Route::get('/{pessoa}')
-        ->uses('PessoaController@view');
-});
-
 Route::prefix('vagas')->group(function () {
     Route::get('/')
         ->uses('VagaController@index');
@@ -44,5 +39,13 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('/candidatar', function () {
         return 'ok';
+    });
+
+    Route::prefix('pessoas')->group(function () {
+        Route::get('/{pessoa}')
+            ->uses('PessoaController@view');
+
+        Route::put('/{pessoa}')
+            ->uses('PessoaController@update');
     });
 });

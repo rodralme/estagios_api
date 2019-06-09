@@ -2,12 +2,13 @@
 
 class Responder
 {
-    public static function success($data = [], string $message = '')
+    public static function success($data = [], string $message = '', $meta = [])
     {
         return response()->json([
             'success' => true,
             'data' => $data,
             'message' => $message,
+            'meta' => $meta,
         ]);
     }
 
