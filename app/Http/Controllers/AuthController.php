@@ -19,7 +19,10 @@ class AuthController extends Controller
             'password' => $request->password,
         ]);
 
-        $usuario->pessoa()->create(['nome' => $request->nome]);
+        $usuario->pessoa()->create([
+            'nome' => $request->nome,
+            'email' => $request->email,
+        ]);
 
         $token = auth()->login($usuario);
 

@@ -41,6 +41,9 @@ Route::middleware('auth:api')->group(function () {
         return 'ok';
     });
 
+    Route::get('/profile')
+        ->uses('PessoaController@profile');
+
     Route::prefix('pessoas')->group(function () {
         Route::get('/{pessoa}')
             ->uses('PessoaController@view');
