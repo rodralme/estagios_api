@@ -14,12 +14,9 @@ class VagaIndexResource extends JsonResource
      */
     public function toArray($request)
     {
-        $this->resource->load('area');
-
         return [
             'id' => $this->id,
-            'ativo' => !$this->trashed(),
-            'created_at' => $this->created_at->diffForHumans(),
+            'data' => $this->created_at->diffForHumans(),
             'titulo' => $this->titulo,
             'descricao' => $this->descricao,
             'inicio' => $this->inicio->format('d/m'),

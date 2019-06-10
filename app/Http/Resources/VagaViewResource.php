@@ -14,21 +14,25 @@ class VagaViewResource extends JsonResource
      */
     public function toArray($request)
     {
-        $this->resource->load('empresa', 'area');
-
-        $candidatado = !empty($this->usuarios()->find(auth()->id()));
+        $this->resource->load('area');
 
         return [
             'id' => $this->id,
             'ativo' => !$this->trashed(),
-            'created_at' => $this->created_at->diffForHumans(),
+            'data' => $this->created_at->format('d/m/Y'),
+            'data_fmt' => $this->created_at->diffForHumans(),
             'titulo' => $this->titulo,
             'descricao' => $this->descricao,
             'remuneracao' => $this->remuneracao,
             'carga_horaria' => $this->carga_horaria . ' horas semanais',
-            'empresa' => new EmpresaViewResource($this->whenLoaded('empresa')),
+            'inicio' => $this->inicio->format('d/m'),
+            'fim' => $this->fim->format('d/m'),
+            'empresa' => $this->empresa,
+            'email' => $this->email,
+            'telefone' => $this->telefone,
+//            'empresa' => new EmpresaViewResource($this->whenLoaded('empresa')),
             'area' => new AreaViewResource($this->whenLoaded('area')),
-            'candidatado' => $candidatado
+            'candidatado' => !empty($this->usuarios()->find(auth()->id())),
         ];
     }
 }
