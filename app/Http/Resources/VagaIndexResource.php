@@ -23,7 +23,6 @@ class VagaIndexResource extends JsonResource
             'fim' => $this->fim->format('d/m'),
             'remuneracao' => $this->remuneracao,
             'carga_horaria' => $this->carga_horaria . ' horas semanais',
-            'empresa' => $this->empresa,
             'email' => $this->email,
             'telefone' => $this->telefone,
             'area' => $this->area,

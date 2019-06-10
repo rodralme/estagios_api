@@ -27,10 +27,9 @@ class VagaViewResource extends JsonResource
             'carga_horaria' => $this->carga_horaria . ' horas semanais',
             'inicio' => $this->inicio->format('d/m'),
             'fim' => $this->fim->format('d/m'),
-            'empresa' => $this->empresa,
             'email' => $this->email,
             'telefone' => $this->telefone,
-//            'empresa' => new EmpresaViewResource($this->whenLoaded('empresa')),
+            'empresa' => new EmpresaViewResource($this->whenLoaded('empresa')),
             'area' => new AreaViewResource($this->whenLoaded('area')),
             'candidatado' => !empty($this->usuarios()->find(auth()->id())),
         ];
