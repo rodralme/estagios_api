@@ -25,10 +25,10 @@ class PessoaSaveRequest extends FormRequest
     {
         return [
             'nome' => 'required',
-            'email' => 'sometimes|email',
-            'nascimento' => 'sometimes|date',
-            'telefone1' => 'sometimes|max:15',
-            'telefone2' => 'sometimes|max:15',
+            'email' => 'sometimes|nullable|email',
+            'nascimento' => 'sometimes|nullable|date',
+            'telefone1' => 'sometimes|nullable|max:15',
+            'telefone2' => 'sometimes|nullable|max:15',
         ];
     }
 }
