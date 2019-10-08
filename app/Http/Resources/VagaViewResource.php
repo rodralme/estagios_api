@@ -29,8 +29,8 @@ class VagaViewResource extends JsonResource
             'fim' => $this->fim->format('d/m'),
             'email' => $this->email,
             'telefone' => $this->telefone,
+            'empresa' => $this->empresa,
             'banner' => $this->banner,
-            'empresa' => new EmpresaViewResource($this->whenLoaded('empresa')),
             'area' => new AreaViewResource($this->whenLoaded('area')),
             'candidatado' => !empty($this->usuarios()->find(auth()->id())),
         ];

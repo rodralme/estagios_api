@@ -28,26 +28,22 @@ Route::prefix('areas')->group(function () {
 });
 
 Route::prefix('vagas')->group(function () {
-    Route::get('/')
-        ->uses('VagaController@index');
-
-    Route::get('/{vaga}')
-        ->uses('VagaController@view');
+    Route::get('/')->uses('VagaController@index');
+    Route::get('{vaga}')->uses('VagaController@view');
 });
 
 Route::middleware('auth:api')->group(function () {
 
-    Route::post('vagas/{vaga}/candidatar')
-        ->uses('VagaController@candidatar');
+    Route::prefix('vagas')->group(function () {
+        Route::post('/')->uses('VagaController@store');
+        Route::put('{vaga}')->uses('VagaController@update');
+        Route::post('{vaga}/candidatar')->uses('VagaController@candidatar');
+    });
 
-    Route::get('/profile')
-        ->uses('PessoaController@profile');
+    Route::get('/profile')->uses('PessoaController@profile');
 
     Route::prefix('pessoas')->group(function () {
-        Route::get('/{pessoa}')
-            ->uses('PessoaController@view');
-
-        Route::put('/{pessoa}')
-            ->uses('PessoaController@update');
+        Route::get('/{pessoa}')->uses('PessoaController@view');
+        Route::put('/{pessoa}')->uses('PessoaController@update');
     });
 });

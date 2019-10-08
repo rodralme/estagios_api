@@ -20,17 +20,12 @@ class Vaga extends Model
      */
     protected $fillable = [
         'titulo', 'descricao', 'inicio', 'fim', 'remuneracao', 'carga_horaria',
-        'banner', 'email', 'telefone', 'empresa_id', 'area_atuacao_id'
+        'banner', 'email', 'telefone', 'empresa', 'area_atuacao_id'
     ];
 
     /*
      * Relacionamentos
      */
-
-    public function empresa()
-    {
-        return $this->belongsTo(Empresa::class, 'empresa_id');
-    }
 
     public function area()
     {

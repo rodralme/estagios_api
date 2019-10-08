@@ -18,7 +18,7 @@ class PessoaController extends Controller
     {
         $pessoa->update($request->all());
 
-        $pessoa->usuario()->update($request->only('nome', 'email'));
+        $pessoa->usuario()->update($request->all('nome', 'email'));
 
         return $this->view($pessoa);
     }

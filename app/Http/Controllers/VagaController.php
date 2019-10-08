@@ -14,15 +14,13 @@ class VagaController extends Controller
     public function index(Request $request)
     {
         $dados = Vaga::join('areas_atuacao', 'areas_atuacao.id', '=', 'vagas.area_atuacao_id')
-            ->leftJoin('empresas', 'empresas.id', '=', 'vagas.empresa_id')
             ->when($request->has('area'), function ($query) use ($request) {
                 $query->where('areas_atuacao.sigla', $request->input('area'));
             })
             ->select(
                 'vagas.*',
                 'areas_atuacao.nome as area',
-                'areas_atuacao.sigla as sigla',
-                'empresas.nome as empresa'
+                'areas_atuacao.sigla as sigla'
             )
             ->paginate(self::PER_PAGE);
 
@@ -32,6 +30,20 @@ class VagaController extends Controller
     public function view(Vaga $vaga)
     {
         return Responder::success(new VagaViewResource($vaga));
+    }
+
+    public function store(Request $request)
+    {
+        $vaga = Vaga::create($request->all());
+
+        return $this->view($vaga);
+    }
+
+    public function update(Request $request, Vaga $vaga)
+    {
+        $vaga->update($request->all());
+
+        return $this->view($vaga);
     }
 
     public function candidatar(Vaga $vaga)

@@ -27,6 +27,7 @@ class VagaIndexResource extends JsonResource
             'telefone' => $this->telefone,
             'area' => $this->area,
             'sigla' => $this->sigla,
+            'empresa' => $this->empresa,
         ];
     }
 }

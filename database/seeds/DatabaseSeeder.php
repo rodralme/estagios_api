@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\AreaAtuacao;
-use App\Models\Pessoa;
 use App\Models\Empresa;
 use App\Models\Vaga;
 use Illuminate\Database\Seeder;
