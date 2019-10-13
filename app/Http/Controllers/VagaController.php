@@ -8,6 +8,7 @@ use App\Http\Resources\VagaViewResource;
 use App\Models\Vaga;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Requests\VagaSeveRequest;
 
 class VagaController extends Controller
 {
@@ -32,7 +33,7 @@ class VagaController extends Controller
         return Responder::success(new VagaViewResource($vaga));
     }
 
-    public function store(Request $request)
+    public function store(VagaSaveRequest $request)
     {
         $vaga = Vaga::create($request->all());
 
