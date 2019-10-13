@@ -32,7 +32,7 @@ class VagaViewResource extends JsonResource
             'empresa' => $this->empresa,
             'banner' => $this->banner,
             'area' => new AreaViewResource($this->whenLoaded('area')),
-            'candidatado' => !empty($this->usuarios()->find(auth()->id())),
+            'candidatado' => !empty($this->candidatos()->find(auth()->id())),
         ];
     }
 }

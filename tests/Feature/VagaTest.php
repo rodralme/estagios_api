@@ -34,4 +34,17 @@ class VagaTest extends TestCase
         $this->actingAs($usuario)->json('get', 'api/vagas/'.$id)
             ->assertJsonFragment(['id' => $id]);
     }
+
+    /**
+     * @test
+     */
+    public function usuarioConsegueCadastrarUmaVaga()
+    {
+        $usuario = factory(Usuario::class)->create();
+
+        $vaga = factory(Vaga::class)->make()->toArray();
+
+        $this->actingAs($usuario)->json('post', 'api/vagas/', $vaga)
+            ->assertStatus(200);
+    }
 }

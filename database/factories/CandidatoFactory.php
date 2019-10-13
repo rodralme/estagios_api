@@ -16,6 +16,9 @@ $factory->define(Pessoa::class, function (Faker $faker) {
         'sobre' => $faker->text,
         'endereco_id' => function() {
             return factory(Endereco::class)->create()->id;
+        },
+        'usuario_id' => function() {
+            return factory(\App\Models\Usuario::class)->create()->id;
         }
     ];
 });

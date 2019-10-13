@@ -48,7 +48,7 @@ class VagaController extends Controller
 
     public function candidatar(Vaga $vaga)
     {
-        $vaga->usuarios()->attach(auth()->id(), ['data' => Carbon::now()]);
+        $vaga->candidatos()->attach(auth()->id(), ['data' => Carbon::now()]);
 
         return $this->view($vaga);
     }

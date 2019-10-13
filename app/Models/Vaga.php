@@ -23,6 +23,15 @@ class Vaga extends Model
         'banner', 'email', 'telefone', 'empresa', 'area_atuacao_id'
     ];
 
+    protected static function boot()
+    {
+        self::creating(function ($model) {
+            $model->usuario_id = auth()->check() ? auth()->user()->id : Usuario::first()->id;
+        });
+
+        parent::boot();
+    }
+
     /*
      * Relacionamentos
      */
@@ -32,7 +41,7 @@ class Vaga extends Model
         return $this->belongsTo(AreaAtuacao::class, 'area_atuacao_id');
     }
 
-    public function usuarios()
+    public function candidatos()
     {
         return $this->belongsToMany(
             Usuario::class,
