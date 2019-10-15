@@ -18,7 +18,7 @@ $factory->define(Vaga::class, function (Faker $faker) {
         'remuneracao' => $faker->optional(0.3)->words(3, true),
         'carga_horaria' => $faker->optional()->numberBetween(20, 44),
         'email' => $faker->companyEmail,
-        'telefone' => '',
+        'telefone' => $faker->numberBetween(14, 15),
         'empresa' => $faker->company,
         'area_atuacao_id' => function() {
             return factory(AreaAtuacao::class)->create()->id;

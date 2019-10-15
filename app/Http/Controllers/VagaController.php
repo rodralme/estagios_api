@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Responder;
+use App\Http\Requests\VagaSaveRequest;
 use App\Http\Resources\VagaIndexResource;
 use App\Http\Resources\VagaViewResource;
 use App\Models\Vaga;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Http\Requests\VagaSeveRequest;
 
 class VagaController extends Controller
 {
