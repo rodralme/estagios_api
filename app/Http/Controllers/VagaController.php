@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Responder;
+use App\Http\Requests\UploadRequest;
 use App\Http\Requests\VagaSaveRequest;
 use App\Http\Resources\VagaIndexResource;
 use App\Http\Resources\VagaViewResource;

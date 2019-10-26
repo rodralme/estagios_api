@@ -34,6 +34,8 @@ Route::prefix('vagas')->group(function () {
 
 Route::middleware('auth:api')->group(function () {
 
+    Route::post('/upload')->uses('UpoadController@upload');
+
     Route::prefix('vagas')->group(function () {
         Route::post('/')->uses('VagaController@store');
         Route::put('{vaga}')->uses('VagaController@update');
