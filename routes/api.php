@@ -24,7 +24,7 @@ Route::post('/logout', 'AuthController@logout');
 Route::prefix('areas')->group(function () {
     Route::get('/', function () {
         return \App\Models\AreaAtuacao::all(['id', 'nome', 'sigla']);
-    });
+    })->middleware('throttle');
 });
 
 Route::prefix('vagas')->group(function () {
