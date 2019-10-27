@@ -32,9 +32,9 @@ Route::prefix('vagas')->group(function () {
     Route::get('{vaga}')->uses('VagaController@view');
 });
 
-Route::post('/upload')->uses('UploadController@upload');
-
 Route::middleware('auth:api')->group(function () {
+
+    Route::post('/upload')->uses('UploadController@upload');
 
     Route::prefix('vagas')->group(function () {
         Route::post('/')->uses('VagaController@store');

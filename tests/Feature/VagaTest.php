@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Usuario;
 use App\Models\Vaga;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class VagaTest extends TestCase
@@ -46,5 +47,16 @@ class VagaTest extends TestCase
 
         $this->actingAs($usuario)->json('post', 'api/vagas/', $vaga)
             ->assertStatus(200);
+    }
+
+    public function testAvatarUpload()
+    {
+        $usuario = factory(Usuario::class)->create();
+
+        $file = UploadedFile::fake()->image('banner.jpg');
+
+        $this->actingAs($usuario)->json('POST', 'api/upload/', [
+            'image' => $file,
+        ])->assertSee('image_key');
     }
 }
