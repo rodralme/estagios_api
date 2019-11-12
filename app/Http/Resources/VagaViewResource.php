@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use JD\Cloudder\Facades\Cloudder;
 
 class VagaViewResource extends JsonResource
 {
@@ -30,7 +31,7 @@ class VagaViewResource extends JsonResource
             'email' => $this->email,
             'telefone' => $this->telefone,
             'empresa' => $this->empresa,
-            'banner' => $this->banner,
+            'banner' => empty($this->banner) ? null : Cloudder::showPrivateUrl($this->banner, 'jpg'),
             'area' => new AreaViewResource($this->whenLoaded('area')),
             'candidatado' => !empty($this->candidatos()->find(auth()->id())),
         ];
