@@ -59,4 +59,18 @@ class VagaTest extends TestCase
             'image' => $file,
         ])->assertSee('image_key');
     }
+
+    /**
+     * @test
+     */
+    public function usuarioConsegueCandidatarAUmaVaga()
+    {
+        $usuario = factory(Usuario::class)->create();
+
+        $vaga = factory(Vaga::class)->create();
+        $id = $vaga->id;
+
+        $this->actingAs($usuario)->json('post', "api/vagas/$id/candidatar")
+            ->assertStatus(200);
+    }
 }
