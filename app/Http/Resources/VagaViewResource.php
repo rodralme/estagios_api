@@ -25,7 +25,7 @@ class VagaViewResource extends JsonResource
             'titulo' => $this->titulo,
             'descricao' => $this->descricao,
             'remuneracao' => $this->remuneracao,
-            'carga_horaria' => $this->carga_horaria . ' horas semanais',
+            'carga_horaria' => empty($this->carga_horaria) ? '' : $this->carga_horaria . ' horas semanais',
             'inicio' => $this->inicio->format('d/m'),
             'fim' => $this->fim->format('d/m'),
             'email' => $this->email,
