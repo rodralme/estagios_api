@@ -8,6 +8,7 @@ use App\Http\Requests\VagaSaveRequest;
 use App\Http\Resources\VagaIndexResource;
 use App\Http\Resources\VagaViewResource;
 use App\Mail\Candidatura;
+use App\Models\Usuario;
 use App\Models\Vaga;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -54,7 +55,15 @@ class VagaController extends Controller
     {
         $vaga->candidatos()->attach(auth()->id(), ['data' => Carbon::now()]);
 
-        Mail::to('rodralme@gmail.com')->send(new Candidatura($vaga, auth()->user()));
+        $usuario = auth()->user();
+
+        $destinatarios = [
+            'ti.rodrigoalmeida@gmail.com',
+            $vaga->email,
+            $usuario->email,
+        ];
+
+        Mail::to($destinatarios)->send(new Candidatura($vaga, $usuario));
 
         return $this->view($vaga);
     }

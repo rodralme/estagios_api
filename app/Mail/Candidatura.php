@@ -35,7 +35,6 @@ class Candidatura extends Mailable
     {
         //
         $this->vaga = $vaga;
-        $this->usuario = $usuario;
         $this->pessoa = $usuario->pessoa()->first();
     }
 
