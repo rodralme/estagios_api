@@ -31,7 +31,7 @@ class VagaViewResource extends JsonResource
             'email' => $this->email,
             'telefone' => $this->telefone,
             'empresa' => $this->empresa,
-            'banner' => empty($this->banner) ? null : Cloudder::showPrivateUrl($this->banner, 'jpg'),
+            'banner' => empty($this->banner) ? null : Cloudder::showPrivateUrl($this->banner, 'png'),
             'area' => new AreaViewResource($this->whenLoaded('area')),
             'candidatado' => !empty($this->candidatos()->find(auth()->id())),
         ];

@@ -14,7 +14,7 @@ class UploadController extends Controller
         Cloudder::upload($image->getRealPath(), null);
 
         return response()->json([
-            'image_key' => Cloudder::getPublicId(),
+            'image_key' => Cloudder::getResult(),
         ]);
     }
 }
